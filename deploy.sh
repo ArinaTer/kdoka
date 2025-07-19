@@ -25,26 +25,21 @@ git checkout main
 
 # Удаляем старые файлы
 echo "🗑️ Удаляем старые файлы..."
-git rm -rf dist/ 2>/dev/null || true
+git rm -rf dist/ index.html assets/ 2>/dev/null || true
 
-# Копируем собранные файлы из dev ветки
-echo "📁 Копируем собранные файлы..."
-git checkout dev -- dist/ 2>/dev/null || echo "Не удалось скопировать dist из dev ветки"
+# Копируем файлы из dev ветки
+echo "📁 Копируем файлы из dev ветки..."
+git checkout dev -- dist/index.html dist/assets/
 
-# Перемещаем файлы из dist в корень
+# Перемещаем файлы в корень
 echo "📁 Перемещаем файлы в корень..."
-if [ -d "dist" ]; then
-    # Перемещаем все файлы из dist в корень
-    mv dist/* . 2>/dev/null || true
-    mv dist/.* . 2>/dev/null || true
-    rmdir dist 2>/dev/null || true
+mv dist/index.html . 2>/dev/null || true
+mv dist/assets . 2>/dev/null || true
+rmdir dist 2>/dev/null || true
 
-    # Добавляем только нужные файлы (исключаем node_modules и другие)
-    git add -f index.html assets/ 2>/dev/null || true
-else
-    echo "❌ Папка dist не найдена"
-    exit 1
-fi
+# Добавляем файлы в Git
+echo "📁 Добавляем файлы в Git..."
+git add -f index.html assets/
 
 # Создаем коммит
 echo "💾 Создаем коммит..."
@@ -52,8 +47,8 @@ git commit -m "Update production build - $(date)"
 
 echo "✅ Деплой завершен!"
 echo "📋 Текущая ветка: $(git branch --show-current)"
-echo "📁 Файлы в dist/:"
-ls -la dist/
+echo "📁 Файлы в корне:"
+ls -la
 
 # Возвращаемся на исходную ветку
 if [ "$CURRENT_BRANCH" != "main" ]; then
