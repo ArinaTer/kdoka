@@ -39,8 +39,8 @@ if [ -d "dist" ]; then
     mv dist/.* . 2>/dev/null || true
     rmdir dist 2>/dev/null || true
 
-    # Добавляем все файлы в корень
-    git add -f .
+    # Добавляем только нужные файлы (исключаем node_modules и другие)
+    git add -f index.html assets/ 2>/dev/null || true
 else
     echo "❌ Папка dist не найдена"
     exit 1
