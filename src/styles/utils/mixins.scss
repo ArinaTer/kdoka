@@ -1,0 +1,31 @@
+// media
+@mixin media($breakpoint, $type: "max") {
+  @if $type == "max" {
+    @media (max-width: #{$breakpoint}px) {
+      @content;
+    }
+  } @else if $type == "min" {
+    @media (min-width: #{$breakpoint}px) {
+      @content;
+    }
+  }
+}
+
+// font
+@mixin font-face(
+  $font-family,
+  $file-path,
+  $weight: normal,
+  $style: normal,
+  $swap: swap
+) {
+  @font-face {
+    font-family: #{$font-family};
+    font-weight: $weight;
+    font-style: $style;
+    font-display: $swap;
+    src: url("#{$file-path}.woff2") format("woff2"),
+      url("#{$file-path}.woff") format("woff"),
+      url("#{$file-path}.ttf") format("truetype");
+  }
+}

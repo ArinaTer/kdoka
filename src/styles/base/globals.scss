@@ -1,0 +1,33 @@
+@use "../utils/utils" as *;
+
+body {
+  @include graphik-regular;
+
+  background: $white;
+  color: $text-color;
+  overflow-x: hidden;
+
+  &.hidden {
+    overflow: hidden;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1810px;
+  width: 100%;
+  position: relative;
+
+  @include media(1900.98, "max") {
+    max-width: 100%;
+    padding: 0 55px;
+  }
+
+  @include media(992.98, "max") {
+    padding: 0 25px;
+  }
+
+  @include media(576.98, "max") {
+    padding: 0 12px;
+  }
+}

@@ -1,0 +1,161 @@
+@use "../utils/utils" as *;
+
+.footer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 45px 0 60px;
+
+  @include media(992.98, "max") {
+    padding: 40px 0 40px;
+  }
+
+  // .footer__wrapper
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .footer__top
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 80px;
+    position: relative;
+    padding: 65px 0 90px;
+
+    @include media(1280.98, "max") {
+      flex-direction: column;
+    }
+
+    @include media(768.98, "max") {
+      padding: 40px 0 40px;
+      gap: 40px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #c7c7c7;
+    }
+  }
+
+  // .footer__text
+  &__text {
+    font-size: 48px;
+    line-height: 100%;
+    color: $black;
+
+    @include media(992.98, "max") {
+      font-size: 32px;
+    }
+
+    @include media(576.98, "max") {
+      font-size: 20px;
+    }
+  }
+
+  // .footer__contacts
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    align-items: flex-end;
+
+    @include media(1280.98, "max") {
+      align-items: flex-start;
+    }
+
+    @include media(768.98, "max") {
+      gap: 10px;
+    }
+  }
+
+  // .footer__email
+  &__email {
+    font-size: 48px;
+    line-height: 100%;
+    color: $black;
+    cursor: pointer;
+
+    @include media(992.98, "max") {
+      font-size: 32px;
+    }
+
+    @include media(576.98, "max") {
+      font-size: 19px;
+    }
+  }
+
+  // .footer__social
+  &__social {
+    font-size: 48px;
+    line-height: 100%;
+    color: $black;
+    cursor: pointer;
+
+    @include media(992.98, "max") {
+      font-size: 32px;
+    }
+
+    @include media(576.98, "max") {
+      font-size: 19px;
+    }
+  }
+
+  // .footer__bottom
+  &__bottom {
+    padding-top: 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #c7c7c7;
+    }
+  }
+
+  // .footer__copyright
+  &__copyright {
+    font-size: 22px;
+    line-height: 40px;
+    letter-spacing: 0%;
+
+    @include media(992.98, "max") {
+      font-size: 20px;
+    }
+
+    @include media(576.98, "max") {
+      font-size: 12px;
+    }
+  }
+
+  // .footer__privacy
+  &__privacy {
+    font-size: 22px;
+    line-height: 40px;
+    letter-spacing: 0%;
+    cursor: pointer;
+
+    @include media(992.98, "max") {
+      font-size: 20px;
+    }
+
+    @include media(576.98, "max") {
+      font-size: 12px;
+    }
+  }
+}

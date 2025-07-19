@@ -1,0 +1,33 @@
+@use "../utils/mixins" as *;
+
+// Graphik
+@include font-face(
+  "graphik-regular",
+  "../assets/fonts/Graphik/GraphikLCWeb-Regular"
+);
+@include font-face(
+  "graphik-medium",
+  "../assets/fonts/Graphik/GraphikLCWeb-Medium"
+);
+@include font-face("graphik-bold", "../assets/fonts/Graphik/GraphikLCWeb-Bold");
+
+//Inter
+@include font-face("inter-semibold", "../assets/fonts/Inter/Inter-SemiBold");
+
+// Graphik
+@mixin graphik-regular {
+  font-family: graphik-regular, Arial, sans-serif;
+}
+
+@mixin graphik-medium {
+  font-family: graphik-medium, Arial, sans-serif;
+}
+
+@mixin graphik-bold {
+  font-family: graphik-bold, Arial, sans-serif;
+}
+
+//Inter
+@mixin inter-semibold {
+  font-family: inter-semibold, Arial, sans-serif;
+}

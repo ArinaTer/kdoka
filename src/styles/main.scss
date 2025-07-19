@@ -1,0 +1,13 @@
+// Utils
+@use "./utils/utils";
+
+// Base
+@use "./base/normalize";
+@use "./base/globals";
+
+// Blocks
+@use "./blocks/header";
+@use "./blocks/footer";
+
+// Pages
+@use "./pages/home";

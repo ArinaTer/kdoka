@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Graphik LC Web';
+    src: url('GraphikLCWeb-Medium.woff2') format('woff2'),
+        url('GraphikLCWeb-Medium.woff') format('woff'),
+        url('GraphikLCWeb-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Graphik LC Web';
+    src: url('GraphikLCWeb-Regular.woff2') format('woff2'),
+        url('GraphikLCWeb-Regular.woff') format('woff'),
+        url('GraphikLCWeb-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Graphik LC Web';
+    src: url('GraphikLCWeb-Bold.woff2') format('woff2'),
+        url('GraphikLCWeb-Bold.woff') format('woff'),
+        url('GraphikLCWeb-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

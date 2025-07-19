@@ -1,0 +1,220 @@
+@use "../utils/utils" as *;
+
+.header {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 38px;
+  left: 0;
+  z-index: 999;
+
+  @include media(992.98, "max") {
+    background: $white;
+    top: 0;
+  }
+
+  // .header__wrapper
+  &__wrapper {
+    background: $white;
+    border-radius: 16px;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include media(992.98, "max") {
+      border-radius: 0;
+      padding: 9px 0;
+      background: transparent;
+    }
+  }
+
+  // .header__logo
+  &__logo {
+    max-width: 160px;
+    height: auto;
+    cursor: pointer;
+
+    @include media(1440.98, "max") {
+      max-width: 100px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  // .header__nav
+  &__nav {
+  }
+
+  // .header__nav-desktop
+  &__nav-desktop {
+    @include media(992.98, "max") {
+      display: none;
+    }
+  }
+
+  // .header__menu
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: 52px;
+
+    @include media(1600.98, "max") {
+      gap: 30px;
+    }
+
+    @include media(1280.98, "max") {
+      gap: 15px;
+    }
+
+    @include media(992.98, "max") {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+  }
+
+  // .header__item
+  &__item {
+  }
+
+  // .header__link
+  &__link {
+    @include graphik-medium;
+    font-size: 22px;
+    line-height: 100%;
+    cursor: pointer;
+
+    @include media(1440.98, "max") {
+      font-size: 18px;
+    }
+    @include media(1280.98, "max") {
+      font-size: 14px;
+    }
+
+    @include media(992.98, "max") {
+      font-size: 20px;
+      line-height: 130%;
+      color: $white;
+    }
+  }
+
+  // .header__right
+  &__right {
+    @include media(992.98, "max") {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  // .header__nav-social
+  &__nav-social {
+    cursor: pointer;
+  }
+
+  // .header__social-icon
+  &__social-icon {
+    display: flex;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+
+    @include media(1440.98, "max") {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  // .header__burger
+  &__burger {
+    display: none;
+    width: 18px;
+    height: 8px;
+    position: relative;
+
+    @include media(992.98, "max") {
+      display: block;
+    }
+  }
+
+  // .header__nav-close
+  &__nav-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 18px;
+    height: 18px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  // .header__burger-line
+  &__burger-line {
+    width: 100%;
+    height: 2px;
+    background: $black;
+    display: flex;
+    position: absolute;
+    left: 0;
+
+    &--first {
+      top: 0;
+    }
+
+    &--second {
+      bottom: 0;
+    }
+  }
+
+  // .header__nav-mobile
+  &__nav-mobile {
+    display: none;
+    width: 600px;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background: #3148d1;
+    padding: 40px 32px;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include media(992.98, "max") {
+      display: flex;
+    }
+
+    @include media(768.98, "max") {
+      width: 300px;
+    }
+
+    &.active {
+      transform: translateX(0%);
+    }
+
+    // .header__social-icon
+    .header__social-icon {
+      width: 45px;
+      height: 45px;
+    }
+
+    // .header__nav-social
+    .header__nav-social {
+      @include media(992.98, "max") {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+    }
+  }
+}
