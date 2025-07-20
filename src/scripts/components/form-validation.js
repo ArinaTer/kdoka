@@ -1,16 +1,15 @@
 export function formValidation() {
     const form = document.querySelector('.feedback__form');
-    const nameInput = document.querySelector('#name');
     const emailInput = document.querySelector('#email');
-    const messageInput = document.querySelector('#message');
     const fileInput = document.querySelector('#file');
-    const submitButton = document.querySelector('.feedback__button');
     const fileLabel = document.querySelector('.feedback__label--file');
 
-    const nameRegex = /^[А-Яа-яA-Za-z\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const allowedFileTypes = ['image/jpeg', 'image/png', 'application/pdf'];
     const maxFileSize = 5 * 1024 * 1024;
+
+    let triedSubmit = false;
+    let emailHadError = false;
 
     function showFileInfo(file) {
         const svgIcon = `
@@ -18,7 +17,7 @@ export function formValidation() {
                 <path d="M5.9999 11.2001L1.7999 7.0001L0.399902 8.4001L5.9999 14.0001L17.9999 2.0001L16.5999 0.600098L5.9999 11.2001Z" fill="white"/>
             </svg>
         `;
-        fileLabel.innerHTML = `<span class="file-info">${file.name}</span> ${svgIcon}`;
+        fileLabel.innerHTML = '<span class="file-info">' + file.name + '</span> ' + svgIcon;
     }
 
     function clearFileInfo() {
@@ -34,53 +33,30 @@ export function formValidation() {
             field.appendChild(error);
         }
         error.textContent = message;
-        input.style.borderColor = 'red';
+        input.classList.add('feedback__input--error');
     }
 
     function clearError(input) {
         const field = input.parentElement;
         const error = field.querySelector('.error-message');
-        if (error) {
-            error.remove();
-        }
-        input.style.borderColor = '';
+        if (error) error.remove();
+        input.classList.remove('feedback__input--error');
     }
 
-    function validateName() {
-        const value = nameInput.value.trim();
-        if (value === '') {
-            showError(nameInput, 'Пожалуйста, введите ваше имя');
-            return false;
-        }
-        if (!nameRegex.test(value)) {
-            showError(nameInput, 'Имя может содержать только буквы и пробелы');
-            return false;
-        }
-        clearError(nameInput);
-        return true;
-    }
-
-    function validateEmail() {
+    function validateEmail(show) {
         const value = emailInput.value.trim();
         if (value === '') {
-            showError(emailInput, 'Пожалуйста, введите ваш email');
+            if (show) showError(emailInput, 'Обязательное поле');
+            emailHadError = true;
             return false;
         }
         if (!emailRegex.test(value)) {
-            showError(emailInput, 'Пожалуйста, введите корректный email');
+            if (show) showError(emailInput, 'Укажите, пожалуйста, корректный email');
+            emailHadError = true;
             return false;
         }
         clearError(emailInput);
-        return true;
-    }
-
-    function validateMessage() {
-        const value = messageInput.value.trim();
-        if (value === '') {
-            showError(messageInput, 'Пожалуйста, введите ваше сообщение');
-            return false;
-        }
-        clearError(messageInput);
+        emailHadError = false;
         return true;
     }
 
@@ -107,21 +83,22 @@ export function formValidation() {
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-
-        const isNameValid = validateName();
-        const isEmailValid = validateEmail();
-        const isMessageValid = validateMessage();
-        const isFileValid = validateFile();
-
-        if (isNameValid && isEmailValid && isMessageValid && isFileValid) {
-            console.log('Форма успешно отправлена!');
+        triedSubmit = true;
+        const isEmailValid = validateEmail(true);
+        validateFile();
+        if (isEmailValid) {
             form.reset();
             clearFileInfo();
+            clearError(emailInput);
+            emailHadError = false;
         }
     });
 
-    nameInput.addEventListener('input', validateName);
-    emailInput.addEventListener('input', validateEmail);
-    messageInput.addEventListener('input', validateMessage);
+    emailInput.addEventListener('input', function () {
+        if (triedSubmit || emailHadError) {
+            validateEmail(true);
+        }
+    });
+
     fileInput.addEventListener('change', validateFile);
 }
