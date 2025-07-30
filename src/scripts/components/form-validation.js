@@ -4,6 +4,11 @@ export function formValidation() {
     const fileInput = document.querySelector('#file');
     const fileLabel = document.querySelector('.feedback__label--file');
 
+    // Если форма или нужные поля отсутствуют, не выполнять дальнейший код
+    if (!form || !emailInput || !fileInput || !fileLabel) {
+        return;
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const allowedFileTypes = ['image/jpeg', 'image/png', 'application/pdf'];
     const maxFileSize = 5 * 1024 * 1024;

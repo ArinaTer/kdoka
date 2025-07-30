@@ -1,8 +1,15 @@
 export function header() {
+    
+    const newsCloseBtn = document.querySelector('.header-news__button--close');
+    if (newsCloseBtn) {
+        newsCloseBtn.addEventListener('click', () => {
+            window.history.back();
+        });
+    }
+
     const burger = document.querySelector('.header__burger');
     const mobileNav = document.querySelector('.header__nav-mobile');
     const closeBtn = document.querySelector('.header__nav-close');
-
     if (!burger || !mobileNav || !closeBtn) {
         console.warn('Header elements not found');
         return;
@@ -47,39 +54,34 @@ export function header() {
         }
     });
 
-    const smoothScrollToAnchor = (event) => {
-        const link = event.target.closest('a');
-
-        if (!link) return;
-
-        const href = link.getAttribute('href');
-
-        if (href && href.startsWith('#') && href.length > 1) {
-            event.preventDefault();
-
-            const targetId = href.substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                if (mobileNav.classList.contains('active')) {
-                    closeMobileMenu();
-                }
-
-                const header = document.querySelector('.header');
-                const headerHeight = header ? header.offsetHeight : 0;
-
-                const elementPosition = targetElement.offsetTop;
-
-                window.scrollTo({
-                    top: elementPosition - headerHeight,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    };
 
     const headerLinks = document.querySelectorAll('.header__link');
     headerLinks.forEach(link => {
-        link.addEventListener('click', smoothScrollToAnchor);
+        link.addEventListener('click', function (event) {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#') && href.length > 1) {
+                const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '';
+                if (!isIndex) {
+                    event.preventDefault();
+                    window.location.href = '/index.html' + href;
+                } else {
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const header = document.querySelector('.header');
+                        const headerHeight = header ? header.offsetHeight : 0;
+                        const elementPosition = targetElement.offsetTop;
+                        window.scrollTo({
+                            top: elementPosition - headerHeight,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            }
+        });
     });
+
+
+
+
 }

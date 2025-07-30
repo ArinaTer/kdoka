@@ -11,6 +11,18 @@
   }
 }
 
+@mixin mediaHeight($breakpoint, $type: "max") {
+  @if $type == "max" {
+    @media (max-height: #{$breakpoint}px) {
+      @content;
+    }
+  } @else if $type == "min" {
+    @media (min-height: #{$breakpoint}px) {
+      @content;
+    }
+  }
+}
+
 // font
 @mixin font-face(
   $font-family,

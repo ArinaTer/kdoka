@@ -1,26 +1,26 @@
 import Swiper from 'swiper';
 import { Navigation } from 'swiper/modules';
 
-function initBannerSwiper() {
-    const bannerSlides = document.querySelectorAll('.banner__swiper-slide');
+function initMainEventsSwiper() {
+    const mainEventsSlides = document.querySelectorAll('.main-events__swiper-slide');
     let initialSlideIndex = 0;
 
-    bannerSlides.forEach((slide, index) => {
-        if (slide.querySelector('.banner__slide-stage-ongoing')) {
+    mainEventsSlides.forEach((slide, index) => {
+        if (slide.querySelector('.main-events__slide-stage-ongoing')) {
             initialSlideIndex = index;
         }
     });
 
-    const bannerSwiperEl = document.querySelector('.banner__swiper');
-    if (!bannerSwiperEl) return;
+    const mainEventsSwiperEl = document.querySelector('.main-events__swiper');
+    if (!mainEventsSwiperEl) return;
 
-    new Swiper(bannerSwiperEl, {
+    new Swiper(mainEventsSwiperEl, {
         modules: [Navigation],
         centeredSlides: true,
         initialSlide: initialSlideIndex,
         navigation: {
-            nextEl: ".banner__swiper-button-next",
-            prevEl: ".banner__swiper-button-prev"
+            nextEl: ".main-events__swiper-button-next",
+            prevEl: ".main-events__swiper-button-prev"
         },
         breakpoints: {
             320: {
@@ -50,7 +50,7 @@ function initCablewaySwiper() {
 
     new Swiper(cablewaySwiperEl, {
         loop: true,
-        initialSlide: 2,
+        // initialSlide: 1,
         breakpoints: {
             320: {
                 slidesPerView: 1.1,
@@ -74,6 +74,6 @@ function initCablewaySwiper() {
 }
 
 export function sliders() {
-    initBannerSwiper();
+    initMainEventsSwiper();
     initCablewaySwiper();
 }

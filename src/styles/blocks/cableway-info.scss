@@ -5,7 +5,7 @@
   height: 100%;
   position: relative;
   overflow: hidden;
-  padding: 60px 0 16px;
+  padding: 60px 0;
 
   @include media(992.98, "max") {
     padding: 40px 0;
@@ -46,59 +46,29 @@
     height: auto;
     border: 1px solid #cecece;
     border-radius: 30px;
-    cursor: pointer;
     overflow: hidden;
     position: relative;
     display: flex;
 
     @include media(1280.98, "max") {
-      background: #d5dbff;
+      background: $white;
       border-radius: 18px;
     }
 
-    &::before {
-      content: "";
-      width: 100%;
-      height: 100%;
-      background: #d5dbff;
-      position: absolute;
-      top: 0;
-      left: 0;
-      clip-path: circle(0% at 1% 1%);
-      transition: all 0.6s ease-in-out;
-      z-index: 1;
-      @include media(1280.98, "max") {
-        display: none;
-      }
-    }
-
-    @media (hover: hover) {
-      &:hover {
-        &::before {
-          clip-path: circle(150% at 1% 1%);
-        }
-
-        .cableway-info__card-headline {
-          top: 40px;
-          left: 40px;
-          transform: translate(0, 0);
-          transition-delay: 0s;
-        }
-
-        .cableway-info__card-label {
-          left: 0;
-          transform: translateX(0);
-          transition-delay: 0s;
-        }
-        .cableway-info__card-value {
-          left: 0;
-          transform: translateX(0);
-          transition-delay: 0s;
-        }
-
-        .cableway-info__card-content {
-          opacity: 1;
-          transition-delay: 0.3s;
+    @include media(1280.99, "min") {
+      &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: $white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        clip-path: circle(0% at 1% 1%);
+        transition: all 0.6s ease-in-out;
+        z-index: 1;
+        @include media(1280.98, "max") {
+          display: none;
         }
       }
     }
@@ -109,7 +79,7 @@
     position: relative;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     gap: 32px;
     padding: 40px 40px 70px;
@@ -125,22 +95,7 @@
 
   // .cableway-info__card-headline
   &__card-headline {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    transition: all 0.3s ease-in-out;
-    width: max-content;
-    height: 90px;
-    transition-delay: 0.2s;
-    @include media(1280.98, "max") {
-      position: relative;
-      top: initial;
-      left: initial;
-      transform: initial;
-      height: auto;
-    }
+    height: 95px;
   }
 
   // .cableway-info__card-value
@@ -149,19 +104,6 @@
     font-size: 72px;
     line-height: 90%;
     color: #063764;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: all 0.3s ease-in-out;
-    transition-delay: 0.2s;
-
-    @include media(1280.98, "max") {
-      position: relative;
-      top: initial;
-      left: initial;
-      transform: initial;
-    }
 
     @include media(992.98, "max") {
       font-size: 62px;
@@ -178,19 +120,6 @@
     font-size: 32px;
     line-height: 90%;
     color: #063764;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: all 0.3s ease-in-out;
-    transition-delay: 0.2s;
-
-    @include media(1280.98, "max") {
-      position: relative;
-      top: initial;
-      left: initial;
-      transform: initial;
-    }
 
     @include media(992.98, "max") {
       font-size: 28px;
@@ -203,15 +132,6 @@
 
   // .cableway-info__card-content
   &__card-content {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    transition-delay: 0s;
-    position: relative;
-    z-index: 2;
-
-    @include media(1280.98, "max") {
-      opacity: 1;
-    }
   }
 
   // .cableway-info__card-text
@@ -219,7 +139,6 @@
     font-size: 22px;
     line-height: 150%;
     width: 100%;
-    margin-top: 130px;
     white-space: nowrap;
 
     @include media(1900.98, "max") {

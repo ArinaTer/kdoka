@@ -158,6 +158,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
+    width: 100%;
     @include media(1280.98, "max") {
       flex-direction: row;
     }
