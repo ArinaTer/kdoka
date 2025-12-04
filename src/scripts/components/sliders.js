@@ -18,6 +18,8 @@ function initMainEventsSwiper() {
         modules: [Navigation],
         centeredSlides: true,
         initialSlide: initialSlideIndex,
+        speed: 300,
+
         navigation: {
             nextEl: ".main-events__swiper-button-next",
             prevEl: ".main-events__swiper-button-prev"
@@ -50,6 +52,8 @@ function initCablewaySwiper() {
 
     new Swiper(cablewaySwiperEl, {
         loop: true,
+        speed: 300,
+
         // initialSlide: 1,
         breakpoints: {
             320: {
@@ -60,9 +64,9 @@ function initCablewaySwiper() {
                 allowTouchMove: true,
             },
             992: {
-                slidesPerView: 1,
-                centeredSlides: true,
-                spaceBetween: 12,
+                slidesPerView: 3,
+                centeredSlides: false,
+                spaceBetween: 20,
             },
             1280: {
                 slidesPerView: 3,

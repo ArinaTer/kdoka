@@ -19,9 +19,13 @@
     color: $title-color;
     margin-bottom: 28px;
 
+    @include media(1280.98, "max") {
+      font-size: 38px;
+      margin-bottom: 24px;
+    }
+
     @include media(992.98, "max") {
       font-size: 32px;
-      margin-bottom: 24px;
     }
 
     @include media(576.98, "max") {
@@ -84,8 +88,10 @@
     gap: 32px;
     padding: 40px 40px 70px;
     flex: 1;
+
     @include media(1280.98, "max") {
       gap: 20px;
+      padding: 30px 30px 50px;
     }
 
     @include media(992.98, "max") {
@@ -96,6 +102,14 @@
   // .cableway-info__card-headline
   &__card-headline {
     height: 95px;
+
+    @include media(1280.98, "max") {
+      height: 75px;
+    }
+
+    @include media(992.98, "max") {
+      height: 95px;
+    }
   }
 
   // .cableway-info__card-value
@@ -105,8 +119,8 @@
     line-height: 90%;
     color: #063764;
 
-    @include media(992.98, "max") {
-      font-size: 62px;
+    @include media(1280.98, "max") {
+      font-size: 52px;
     }
 
     @include media(576.98, "max") {
@@ -121,8 +135,8 @@
     line-height: 90%;
     color: #063764;
 
-    @include media(992.98, "max") {
-      font-size: 28px;
+    @include media(1280.98, "max") {
+      font-size: 24px;
     }
 
     @include media(576.98, "max") {
@@ -152,9 +166,6 @@
     @include media(1280.98, "max") {
       margin-top: 0;
       max-width: 100%;
-    }
-
-    @include media(992.98, "max") {
       font-size: 20px;
     }
 

@@ -6,7 +6,7 @@
   overflow: hidden;
   position: relative;
   padding: 0 0 60px;
-  @include media(1280.98, "max") {
+  @include media(992.98, "max") {
     padding: 60px 0;
   }
 
@@ -20,7 +20,7 @@
     gap: 20px;
     align-items: stretch;
 
-    @include media(1280.98, "max") {
+    @include media(992.98, "max") {
       flex-direction: column;
       gap: 40px;
     }
@@ -35,7 +35,7 @@
     flex-basis: 75%;
     max-width: 75%;
 
-    @include media(1280.98, "max") {
+    @include media(992.98, "max") {
       flex-basis: 100%;
       max-width: 100%;
     }
@@ -50,13 +50,17 @@
     font-size: 48px;
     margin-bottom: 28px;
 
-    @include media(1280.98, "max") {
+    @include media(992.98, "max") {
       display: block;
+    }
+
+    @include media(1280.98, "max") {
+      font-size: 38px;
+      margin-bottom: 12px;
     }
 
     @include media(992.98, "max") {
       font-size: 32px;
-      margin-bottom: 12px;
     }
 
     @include media(576.98, "max") {
@@ -108,7 +112,7 @@
     transition: transform 0.3s ease-in-out;
     pointer-events: none;
 
-    @include media(992.98, "max") {
+    @include media(1280.98, "max") {
       width: 80px;
       height: 80px;
     }
@@ -127,7 +131,7 @@
       left: 55%;
       transform: translate(-50%, -50%);
 
-      @include media(992.98, "max") {
+      @include media(1280.98, "max") {
         width: 30px;
         height: 30px;
       }
@@ -143,7 +147,7 @@
   &__stations {
     flex: 1;
     display: flex;
-    @include media(1280.98, "max") {
+    @include media(992.98, "max") {
       flex-direction: column;
     }
 
@@ -159,7 +163,7 @@
     justify-content: space-between;
     gap: 10px;
     width: 100%;
-    @include media(1280.98, "max") {
+    @include media(992.98, "max") {
       flex-direction: row;
     }
 
@@ -188,7 +192,7 @@
       }
     }
 
-    @include media(992.98, "max") {
+    @include media(1280.98, "max") {
       border-radius: 20px;
     }
   }
@@ -221,8 +225,11 @@
       left: 20px;
     }
 
-    @include media(992.98, "max") {
+    @include media(1280.98, "max") {
       font-size: 18px;
+    }
+
+    @include media(992.98, "max") {
     }
 
     @include media(768.98, "max") {

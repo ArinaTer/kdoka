@@ -26,7 +26,7 @@
     position: relative;
     padding: 65px 0 90px;
 
-    @include media(1280.98, "max") {
+    @include media(1024.98, "max") {
       flex-direction: column;
     }
 
@@ -56,7 +56,7 @@
     line-height: 100%;
     color: $black;
 
-    @include media(992.98, "max") {
+    @include media(1280.98, "max") {
       font-size: 32px;
     }
 
@@ -93,7 +93,7 @@
     color: $black;
     cursor: pointer;
 
-    @include media(992.98, "max") {
+    @include media(1280.98, "max") {
       font-size: 32px;
     }
     @include media(768.98, "max") {
@@ -113,7 +113,7 @@
     color: $black;
     cursor: pointer;
 
-    @include media(992.98, "max") {
+    @include media(1280.98, "max") {
       font-size: 32px;
     }
 

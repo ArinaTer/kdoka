@@ -88,7 +88,7 @@ export function map() {
     function setMapPosition(index, animate = true) {
         currentIndex = index;
         if (animate) {
-            elements.media.style.transition = 'transform 0.5s cubic-bezier(.4,1.5,.5,1)';
+            elements.media.style.transition = 'transform 1s cubic-bezier(.4,1.2,.2,1)';
         } else {
             elements.media.style.transition = 'none';
         }
@@ -185,12 +185,18 @@ export function map() {
                 if (window.innerWidth > 1024) {
                     dot.classList.add('map__dot--active');
                     dot.classList.remove('map__dot--close');
+                    if (animationInterval) {
+                        clearInterval(animationInterval);
+                        animationInterval = null;
+                        dots.forEach(d => d.classList.remove('map__dot--animated'));
+                    }
                 }
             }
 
             function handleMouseLeave() {
                 if (window.innerWidth > 1024) {
                     dot.classList.remove('map__dot--active');
+                    startDesktopDotAnimation();
                 }
             }
 
